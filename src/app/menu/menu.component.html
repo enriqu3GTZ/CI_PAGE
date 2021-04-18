@@ -1,0 +1,92 @@
+
+<div>
+    <div class="user">
+        <div class="dropdown show m-0">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user"></i> {{(sesionActiva | async) ? 'BIENVENID@':'LOGIN'}}
+            </a>
+          
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a *ngIf="!(sesionActiva | async)" class="dropdown-item" href="javascript:void(0)" data-toggle="modal" data-target="#exampleModal">Iniciar sesión</a>
+              <a *ngIf="(sesionActiva | async)" (click)="miPerfil()" class="dropdown-item" href="javascript:void(0)">Mi Perfil</a>
+              <a *ngIf="(sesionActiva | async)" (click)="cerrarSesion()" class="dropdown-item" href="javascript:void(0)">Cerrar sesión</a>
+            </div>
+          </div>
+    </div>
+    
+    <nav>
+        <img src="assets/RA_LOGO.png" alt="" class="logo">
+        
+        <ul class="d-none d-sm-flex">
+            <li><a href="javascript:void(0)" [routerLink]="['/inicio']">Inicio</a></li>
+            <li><a href="javascript:void(0)" [routerLink]="['/nosotros']">Nosotros</a></li>
+            <li class="unete-a" *ngIf="!(sesionActiva | async)"><a href="" [routerLink]="['/contacto']">UNETE</a></li>
+        </ul>
+
+        <button class="navbar-toggler d-flex d-sm-none" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+          </button>
+          
+    </nav>
+    <div class="collapse menu-mob" id="navbarToggleExternalContent" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      
+      <div class="row">
+        <div class="m1"></div>
+        <div class="m2">
+          <button class="close-menu" type="button">
+            <i class="fas fa-times"></i>
+          </button>
+          <div>
+            <ul>
+              <li><a href="javascript:void(0)" [routerLink]="['/inicio']">Inicio</a></li>
+              <li><a href="javascript:void(0)" [routerLink]="['/nosotros']">Nosotros</a></li>
+              <li class="unete-a" *ngIf="!(sesionActiva | async)"><a href="" [routerLink]="['/contacto']">UNETE</a></li>
+          </ul>
+          </div>
+
+
+          <div class="menu-contact">
+            <p>@contacto</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</div>
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">INICIAR SESIÓN</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="mx-3 ini-ses">
+          <small class="msjError">{{mensjError}}</small>
+          <div class="form-group row">
+              <input [(ngModel)]="email" type="text" class="form-control" id="staticEmail" placeholder="Email">
+         </div>
+          <div class="form-group row">
+              <input [(ngModel)]="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+          
+          <div class="form-group row justify-content-center">
+            <button type="button" (click)="validarLogin()" data-dismiss="modal" class="btn">LOGIN</button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div style="min-height: calc(100vh - 347px);">
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>

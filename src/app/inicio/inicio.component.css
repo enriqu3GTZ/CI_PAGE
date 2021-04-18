@@ -1,0 +1,48 @@
+
+
+/*------CARRUSEL------*/
+.celular{position: absolute;z-index: 2; width: 100%; height: 100%;}
+.carousel {  height: 80vh;  width: 85%;  margin-left: 7.5%; position: relative;}
+.carousel-inner{height: 100%; border-radius: 90px;}
+.carousel-item {height: 100%;}
+.carousel-item img{object-fit: cover; border-radius: 97px; width: 100%; height: 100%;}
+.carousel-info{position: absolute;z-index: 10;  top: 0; height: 100%; width: 100%; display: flex;  flex-direction: column; justify-content: center; align-items: center;}
+.carousel-info h1{color: var(--c-blue-dark); width: 40%; text-align: center; font-weight: bolder;}
+.carousel-indicators{bottom: 10%;}
+
+/*------MISION VISION------*/
+.mision-vision{width: 100%; height: 400px; box-shadow: 15px 10px 18px #888888;}
+.mision-cont{ background: url("../../assets/bg-mv.jpg");  background-size: cover;  width: 100%;  height: 100%;}
+.vision-cont{background: var(--c-blue-dark);  background-size: cover;  width: 100%;  height: 100%;}
+.mision-cont h2,.vision-cont h2{position: relative; z-index: 10; font-size: 120px; transition-duration: 2s}
+.mision-cont p, .vision-cont p{display: none;transition-duration: 2s; width: 60%; text-align: center; font-size: 30px; position: relative; z-index: 8;}
+.mision-cont,.vision-cont{display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative;}
+/*hover*/
+.mision-cont:hover .overlay,.vision-cont:hover .overlay{background-color: #29afa2d7;}
+.mision-cont:hover h2,.vision-cont:hover h2{color: var(--c-blue-dark);}
+.mision-cont:hover p,.vision-cont:hover p{display: block;}
+
+/* INSTITUCIONES -------- */
+.instituciones{width: 100%; display: flex; flex-direction: column; justify-content: center; align-items:center} 
+.instituciones h1{width: 60%; text-align: center;}
+.tarjeta-inst img{width: 100%; height: 250px; border-radius: 50%;}
+.tarjeta-info{display: flex; flex-direction: column; align-items: center; margin-top: 15px;}
+.tarjeta-info h5{font-size: 40px; color: var(--c-green-2); font-family: 'Truculenta', sans-serif;}
+.tarjeta-info i{font-size: 30px; color: var(--c-green-1);}
+.tarjeta-info i:hover{color: var(--c-green-2);}
+
+@media only screen and (max-width: 600px) {
+    .mision-vision{height: 100%; box-shadow: none;}
+    .mision-cont h2,.vision-cont h2{font-size: 60px;   width: 100%;    text-align: center;}
+    .mision-cont,.vision-cont{height: 300px;}
+    .instituciones h1{width: 100%; font-size: 55px;}
+    .carousel{height: 650px;}
+    .carousel-indicators{bottom: 75px;}
+    .carousel-info h1{width: 90%;font-size: 60px;}
+    .carousel-inner{border-radius: 38px;}
+    .tarjeta-inst{display: flex;margin-bottom: 20px;}
+    .tarjeta-inst img{width: 50%; height: 100%;}
+    .tarjeta-info{    justify-content: center; width: 50%;}
+    .tarjeta-info h5{font-size: 30px;}
+    .mision-cont p, .vision-cont p{display: flex;     width: 100%; font-size: 18px}
+}

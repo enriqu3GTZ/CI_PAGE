@@ -1,0 +1,133 @@
+<section class="contacto mb-5">
+
+  <div class="formulario">
+    <h1 class="titulo-c">UNETE</h1>
+    <p>Bienvenido a Rubikarts es un placer contar contigo</p>
+    <p>
+      Rubikarts busca ser el medio por el cual las grandes ideas y las grandes causas puedan ser escuchadas. Para esto
+      estamos desarrollando Campamento Impacto, app en la cual los usuarios podrán divertirse administrando su propio
+      campamento de campistas y las ganancias obtenidas en la tienda serán compartidas para apoyar grandes causas. Por
+      favor llena este formulario y cuéntanos sobre ti estamos emocionados de que puedas formar parte de este camino.
+    </p>
+
+    <form [formGroup]="form" (ngSubmit)="enviarSolicitud()">
+
+
+
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="nomOrg">Nombre Organizacion*</label>
+            <input formControlName="name" type="email" class="form-control" id="nomOrg">
+          </div>
+        </div>
+
+      </div>
+
+      <label for="nombreR">Nombre Representante*</label>
+      <div class="row" id="nombreR">
+
+        <div class="col-6">
+          <div class="form-group">
+            <input formControlName="firstName" placeholder="First Name" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <input formControlName="lastName" placeholder="Last-name" type="text" class="form-control">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="numeroT">Numero Telefonico*</label>
+            <ngx-intl-tel-input formControlName="phone" [enableAutoCountrySelect]="false" [enablePlaceholder]="true"
+              [searchCountryFlag]="true" [onlyCountries]="[CountryISO.Mexico]" [selectFirstCountry]="false"
+              [selectedCountryISO]="CountryISO.Mexico" [maxLength]="'15'" [phoneValidation]="true" [inputId]="'numeroT'"
+              name="phone"></ngx-intl-tel-input>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="emailInp">Email*</label>
+            <input formControlName="email" type="email" class="form-control" id="emailImp"
+              placeholder="name@example.com">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="descripcionInp">Descripcion*</label>
+        <textarea formControlName="descripcion" class="form-control" id="descripcionInp" rows="3"
+          style="resize: none;"></textarea>
+      </div>
+
+
+
+
+
+      <div class="redes-sociales">
+        <h5>Redes sociales <small>introducir los <b>links</b> a tus redes sociales (minimo 1)</small></h5>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <button class="btn" type="button"><i class="fab fa-facebook-square"></i></button>
+          </div>
+          <input formControlName="redSFace" placeholder="Facebook" type="text" class="form-control">
+        </div>
+
+        <div class="input-group my-2">
+          <div class="input-group-prepend">
+            <button class="btn" type="button"><i class="fab fa-instagram"></i></button>
+          </div>
+          <input formControlName="redSInst" placeholder="Instagram" type="text" class="form-control">
+        </div>
+
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <button class="btn" type="button"><i class="fab fa-twitter-square"></i></button>
+          </div>
+          <input formControlName="redSTwit" type="text" class="form-control" placeholder="Twitter">
+        </div>
+
+        <div class="input-group my-2">
+          <div class="input-group-prepend">
+            <button class="btn" type="button"><i class="fab fa-tiktok"></i></button>
+          </div>
+          <input formControlName="redSTik" type="text" class="form-control" placeholder="Tiktok">
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <button class="btn" type="button"><i class="fas fa-globe"></i></button>
+          </div>
+          <input formControlName="redSPag" type="text" class="form-control" placeholder="Pagina Web">
+        </div>
+      </div>
+
+      <p class="pt-5 width-100 text-right"><b>
+          Al ser verficada tu cuenta te contactaremos a tu correo electronico,
+          para obtener notificaciones en tiempo real envia un whats-app al <i class="fab fa-whatsapp"></i>+1 415 523
+          8886
+        </b>
+      </p>
+      <div class="row width-100 justify-content-end">
+
+        <button type="submit" class="btn btn-enviar btn-lg" [disabled]="form.invalid">ENVIAR</button>
+      </div>
+    </form>
+
+    <!-- <div class="beneficios p-3 p-sm-4 mt-5">
+      <h2>¿PORQUE?</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nihil rerum, unde et debitis corporis corrupti
+        accusamus. Neque provident saepe adipisci odio cupiditate molestias! Optio adipisci vel enim dignissimos
+        aperiam!
+      </p>
+    </div> -->
+  </div>
+
+</section>

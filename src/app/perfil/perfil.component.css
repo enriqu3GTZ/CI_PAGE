@@ -1,0 +1,27 @@
+.usr-card, .usr-card-editar{width: 80%; margin-bottom: 70px; position: relative;}
+.usr-card img{width: 100%;}
+.editarBtn{position: absolute; top: 15px; right: 20px;z-index: 10; ;font-size: 20px; color: var(--c-blue-dark); border: none; background-color: rgba(179, 172, 172, 0.692);}
+.usr-card p{color: var(--c-blue-dark);}
+.usr-card-editar textarea{resize: none;}
+.usr-card-editar .redes-perfil .btn{background-color: var(--c-blue-dark); color: #FFF;}
+.usr-card-editar p{color: var(--c-blue-dark);}
+
+.redes-perfil, .tarjeta-perfil, .datos-perfil{background-color: #aee25ab7; border-radius: 30px;}
+.tarjeta-perfil .btn{background-color: var(--c-blue-dark); color: #FFF;}
+.tarjeta-perfil a{color:var(--c-blue-2); font-weight: bolder ;}
+.tarjeta-perfil .btn:hover{background-color: var(--c-blue-1); color:var(--c-blue-dark);}
+.redes-perfil h3{color: var(--c-blue-dark);}
+.redes-perfil a{font-size: 20px; display: flex; align-items: center; margin-left: 20px; margin-bottom: 15px;}
+.redes-perfil a i{margin-right: 10px;font-size: 50px; color: var(--c-blue-dark);}
+.usr-card-editar .redes-perfil a i{font-size: 16px; color: #FFF; margin-right: 0;}
+.usr-card-editar .redes-perfil a{margin-left: 0px; margin-bottom: 0px;}
+.redes-perfil a:hover i{color: var(--c-blue-2);}
+
+@media only screen and (max-width: 600px) {
+    .usr-card, .usr-card-editar{width: 90%;}
+    .editarBtn{top: 20px;}
+    .card-body{padding: 1rem;}
+    .usr-card p{text-align: justify;}
+    .usr-card-editar h1{font-size: 40px;}
+}
+

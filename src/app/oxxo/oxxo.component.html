@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row justify-content-center mb-4">
+        <div class="col-6 card pt-3">
+            <h3>Ingresa los siguientes datos...</h3>
+            <ng-container *ngIf="status == FORM">
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input [(ngModel)]="name" type="text" class="form-control" [disabled]="loading">
+                </div>
+                <div class="form-group">
+                    <label for="">Correo</label>
+                    <input [(ngModel)]="email" type="text" class="form-control" [disabled]="loading">
+                </div>
+
+                <div class="form-group">
+                    <button type="button" (click)="continue()" class="green-btn btn">Continuar</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="status == FAIL">
+                Error intenta mas tarde
+            </ng-container>
+            <ng-container *ngIf="status == SUCCESS">
+                exito paga creado
+            </ng-container>
+        </div>
+    </div>
+</div>

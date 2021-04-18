@@ -1,0 +1,19 @@
+.contacto {display: flex; justify-content: center; width: 100%; flex-direction: column; align-items: center;}
+.formulario{ width: 80%; background-color: #29afa275; position: relative; padding: 60px 10%; box-shadow: 5px 10px 18px #888888;}
+.titulo-c{position: absolute; top: -60px; left: 10%; color: var(--c-blue-dark);}
+.beneficios{background-color: var(--c-blue-dark);  border-radius: 20px;}
+
+.redes-sociales i{font-size: 23px;}
+.redes-sociales button{background: #2B3547; border:  none; color: #FFF;}
+.redes-sociales button:hover{background: var(--c-green-1)}
+.formulario p{color: var(--c-blue-dark);}
+.btn-enviar{background-color: var(--c-green-1); border: none; width: 200px;}
+.btn-enviar:hover{background-color: var(--c-blue-1); border: none; color: var(--c-green-1);}
+.beneficios p{color: var(--c-green-1); padding-right: 10%;}
+
+
+@media only screen and (max-width: 600px) {
+    .formulario p{font-size: 15px;}
+    .formulario{padding: 60px 5%; width: 90%;}
+    .beneficios p{text-align: center; padding-right: 0%;}
+}

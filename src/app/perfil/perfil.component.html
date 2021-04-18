@@ -1,0 +1,201 @@
+<div class="row m-0 justify-content-center">
+  <div class="card usr-card" *ngIf="!editar">
+
+    <button (click)="btnEditar()" type="button" class="editarBtn btn" data-toggle="tooltip" data-placement="top"
+      title="Editar Informacion"><i class="fas fa-edit"></i></button>
+
+
+    <div class="card-body">
+      <div class="row m-0 ">
+        <div class="col-sm-3 col-10">
+          <img style="object-fit: cover;" class="mb-2" [src]="getOrganizationImage()" alt="">
+        </div>
+        <div class="col-sm-9 col-12">
+          <h1>{{org?.name}}</h1>
+          <p>{{org?.description}}</p>
+        </div>
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <div class="tarjeta-perfil col-sm-10 col-11 p-4 mt-sm-0 mt-4">
+          <h3>Informacion de Pago</h3>
+          <div class="col-12 p-0">
+            <p>
+              Todas las donaciones hechas por Rubikarts serán realizados utilizando Stripe quienes son una empresa de
+              tecnología que construye infraestructura económica para Internet que otorgan la infraestructura y
+              seguridad requeridas para una transacción monetaria.
+              <a href="https://stripe.com/en-mx/about" target="_blank">haz clic aquí para mas informacion</a>
+            </p>
+          </div>
+          <div style="display: flex;">
+            
+            <div class="stripe-status" [ngClass]="stripeStatus">
+              {{stripeStatus}}
+            </div>
+            <button class="btn" (click)="goToStripe()">Ir a stripe <i class="fas fa-arrow-circle-right"></i></button>
+          </div>
+          <!-- <div class="row justify-content-end mr-sm-5 mr-1 mt-3">
+            <button class="btn" (click)="goToStripe()">Ir a stripe <i class="fas fa-arrow-circle-right"></i></button>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="mt-4 mx-3 row justify-content-center">
+        <div class="redes-perfil col-sm-4 col-12 p-3 mr-sm-5">
+          <h3>Redes sociales</h3>
+
+          <div class="row">
+            <a *ngIf="getSocialMedia('FACEBOOK')" target="_blank" [href]="getSocialMedia('FACEBOOK')?.link"><i
+                class="fab fa-facebook-square"></i></a>
+            <a *ngIf="getSocialMedia('INSTAGRAM')" target="_blank" [href]="getSocialMedia('INSTAGRAM')?.link"><i
+                class="fab fa-instagram-square"></i></a>
+            <a *ngIf="getSocialMedia('TWITTER')" target="_blank" [href]="getSocialMedia('TWITTER')?.link"><i
+                class="fab fa-twitter-square"></i></a>
+            <a *ngIf="getSocialMedia('TIKTOK')" target="_blank" [href]="getSocialMedia('TIKTOK')?.link"><i
+                class="fab fa-tiktok"></i></a>
+            <a *ngIf="getSocialMedia('WEB')" target="_blank" [href]="getSocialMedia('WEB')?.link"><i
+                class="fas fa-globe"></i></a>
+          </div>
+
+        </div>
+
+        <div class="datos-perfil col-sm-6 col-12 p-3 mt-sm-0 mt-4">
+          <h3>Datos</h3>
+          <p>REPRESENTANTE: <b>{{org?.firstname}} {{org?.lastname}}</b></p>
+          <p>TELEFONO: <b>{{org?.phone}}</b></p>
+          <p>EMAIL: <b>{{org?.email}}</b></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- EDITAR -->
+
+
+  <div class="card usr-card-editar" *ngIf="editar">
+
+    <div class="card-body">
+      <h1>EDITA TU INFORMACION</h1>
+      <div class="row">
+        <div class="col-7">
+          <input class="form-control" type="text" *ngIf="orgEditar" [(ngModel)]="orgEditar.name" value="{{orgEditar?.name}}" placeholder="Nombre Institucion">
+        </div>
+        <div class="col-5 mb-3">
+          <div class="custom-file">
+            <input accept=".jpg,.png,.jpeg" type="file" class="custom-file-input" id="customFile" (change)="onSelectFile($event)">
+            <label class="custom-file-label" for="customFile">Elegir Imagen</label>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <textarea *ngIf="orgEditar" [(ngModel)]="orgEditar.description" class="form-control" id="exampleFormControlTextarea1"
+            rows="3"></textarea>
+        </div>
+      </div>
+
+      
+
+      <div class="mt-4 mx-3 row justify-content-center">
+        <div class="redes-perfil col-sm-4 col-12 p-3 mr-sm-5">
+          <h3>Redes sociales</h3>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button target="_blank" class="btn" type="button"><i class="fab fa-facebook-square"></i></button>
+            </div>
+            <input [(ngModel)]="red_fb" placeholder="Facebook" type="text" class="form-control" aria-label=""
+              aria-describedby="basic-addon1">
+          </div>
+
+          <div class="input-group my-2">
+            <div class="input-group-prepend">
+              <button class="btn" type="button"><i class="fab fa-instagram"></i></button>
+            </div>
+            <input [(ngModel)]="red_insta" placeholder="Instagram" type="text" class="form-control" aria-label=""
+              aria-describedby="basic-addon1">
+          </div>
+
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button class="btn" type="button"><i class="fab fa-twitter-square"></i></button>
+            </div>
+            <input [(ngModel)]="red_twitter" type="text" class="form-control" placeholder="Twitter" aria-label="" aria-describedby="basic-addon1">
+          </div>
+
+          <div class="input-group my-2">
+            <div class="input-group-prepend">
+              <button class="btn" type="button"><i class="fab fa-tiktok"></i></button>
+            </div>
+            <input [(ngModel)]="red_tiktok" placeholder="Tik Tok" type="text" class="form-control" aria-label=""
+              aria-describedby="basic-addon1">
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <button class="btn" type="button"><i class="fas fa-globe"></i></button>
+            </div>
+            <input [(ngModel)]="red_web" placeholder="Pagina Web" type="text" class="form-control" aria-label=""
+              aria-describedby="basic-addon1">
+          </div>
+        </div>
+
+        <div class="datos-perfil col-sm-6 col-12 p-3 mt-sm-0 mt-4">
+          <h3>Datos</h3>
+          <label for="nomRep">Representante (nombre-apeido): </label>
+          <div class="row mb-2" id="nomRep">
+            <div class="col-6">
+              <input class="form-control" *ngIf="orgEditar" [(ngModel)]="orgEditar.firstname" type="text" value="{{orgEditar?.firstname}}" placeholder="Nombre">
+            </div>
+            <div class="col-6">
+              <input class="form-control" *ngIf="orgEditar" [(ngModel)]="orgEditar.lastname" type="text" value="{{orgEditar?.lastname}}" placeholder="Apeido">
+            </div>
+          </div>
+          
+          <label for="tel">Telefono: </label>
+          <input id="tel" class="form-control" type="text" value="{{orgEditar?.phone}}" placeholder="Telefono" disabled>
+
+          <label for="mail" class="mt-2">Email: </label>
+          <input id="mail" class="form-control" type="text" value="{{orgEditar?.email}}" placeholder="email" disabled>
+
+        </div>
+      </div>
+
+
+
+      <div class="row justify-content-center mt-sm-5 mt-3">
+        <div class="tarjeta-perfil col-sm-10 col-11 p-4 mt-sm-0 mt-4">
+          <h3>Informacion de Pago</h3>
+          <div class="col-12 p-0">
+            <p>
+              Todas las donaciones hechas por Rubikarts serán realizados utilizando Stripe quienes son una empresa de
+              tecnología que construye infraestructura económica para Internet que otorgan la infraestructura y
+              seguridad requeridas para una transacción monetaria.
+              <a href="https://stripe.com/en-mx/about" target="_blank">haz clic aquí para mas informacion</a>
+            </p>
+          </div>
+
+          <div style="display: flex;">
+            
+            <div class="stripe-status" [ngClass]="stripeStatus">
+              {{stripeStatus}}
+            </div>
+            <button class="btn" (click)="goToStripe()">Ir a stripe <i class="fas fa-arrow-circle-right"></i></button>
+          </div>
+
+          <!-- <div class="row justify-content-end mr-5 mt-3">
+            <button class="btn" (click)="goToStripe()">Ir a stripe <i class="fas fa-arrow-circle-right"></i></button>
+          </div> -->
+        </div>
+      </div>
+
+
+      <div class="row justify-content-end mt-5 mr-4">
+        <button class="btn green-btn mr-4" type="button" (click)="guardar()">GUARDAR</button>
+        <button class="btn calcel-btn" type="button" (click)="salir()">SALIR</button>
+      </div>
+    </div>
+  </div>
+
+</div>

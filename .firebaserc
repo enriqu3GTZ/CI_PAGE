@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "campamentoimpacto-a4217": {
+      "hosting": {
+        "cImpacto": [
+          "campamentoimpacto-a4217"
+        ]
+      }
+    }
+  }
+}
